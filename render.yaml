@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: poltava-rescue-online
+    runtime: node
+    plan: free
+    numInstances: 1
+    buildCommand: npm install --omit=dev --ignore-scripts
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 24
+      - key: ALLOWED_ORIGINS
+        sync: false
